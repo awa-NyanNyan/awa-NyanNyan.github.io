@@ -1,10 +1,213 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <title>一隅</title>
-    </head>
-    <body>
-        <h1>小居 | 一隅</h1>
-    </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="个人工坊 — 互联网上属于我的一隅，放些记录、作品和杂七杂八的东西。">
+<title>隙间 · 个人工坊</title>
+<style>
+  :root{
+    --bg:#f7f6f3;
+    --surface:#ffffff;
+    --fg:#1b1b1b;
+    --muted:#87837b;
+    --line:#e7e3db;
+    --accent:#3a5a8c;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#151518;
+      --surface:#1c1c21;
+      --fg:#e8e6e1;
+      --muted:#8a8984;
+      --line:#2b2b32;
+      --accent:#8fb0dd;
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit;text-decoration:none;}
+  a:hover{color:var(--accent);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  header.site{border-bottom:1px solid var(--line);}
+  header.site .wrap{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:12px;flex-wrap:wrap;
+    padding-top:22px;padding-bottom:22px;
+  }
+  .brand{margin:0;font-size:19px;font-weight:600;letter-spacing:.18em;}
+  .host{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+    font-size:12px;letter-spacing:.06em;color:var(--muted);
+  }
+
+  .intro{padding:72px 0 8px;}
+  .intro h1{
+    margin:0 0 18px;
+    font-size:clamp(30px,6vw,44px);
+    font-weight:650;
+    letter-spacing:.04em;
+  }
+  .intro p{margin:0 0 6px;color:var(--muted);}
+  .intro .lead{color:var(--fg);font-size:1.05em;}
+
+  .rooms{
+    counter-reset:room;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:16px;
+    padding:44px 0 60px;
+  }
+  .room{
+    grid-column:span 2;
+    counter-increment:room;
+    display:flex;
+    flex-direction:column;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:22px 24px 24px;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .room.wide{grid-column:span 4;}
+  .room:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .room::before{
+    content:counter(room,decimal-leading-zero);
+    display:block;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12px;letter-spacing:.1em;color:var(--muted);
+    margin-bottom:10px;
+  }
+  .room h2{margin:0 0 8px;font-size:18px;font-weight:600;letter-spacing:.06em;}
+  .room p{margin:0;font-size:14.5px;color:var(--muted);}
+  .room .mail{margin-top:10px;}
+  .room .mail a{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13.5px;color:var(--accent);
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease;
+  }
+  .room .mail a:hover{border-bottom-color:var(--accent);}
+  .room .note{
+    margin-top:auto;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12.5px;color:var(--muted);
+  }
+
+  @media (max-width:860px){
+    .rooms{grid-template-columns:repeat(4,1fr);}
+    .room{grid-column:span 2;}
+    .room.wide{grid-column:span 4;}
+  }
+  @media (max-width:560px){
+    .rooms{grid-template-columns:1fr;}
+    .room,.room.wide{grid-column:span 1;}
+  }
+
+  footer.site{border-top:1px solid var(--line);}
+  footer.site .wrap{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:26px 0 40px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12px;color:var(--muted);
+  }
+  .nyn{letter-spacing:.12em;color:var(--accent);}
+</style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <p class="brand">隙间</p>
+      <p class="host">awa-nyn.me</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" id="plate">
+      <h1>个人工坊</h1>
+      <p class="lead">欢迎，这里是我的个人工坊。</p>
+      <p>互联网上属于我的一隅，放些记录、作品和杂七杂八的东西。</p>
+    </section>
+
+    <section class="rooms">
+      <article class="room" id="workbench">
+        <h2>工作台</h2>
+        <p>我的工作台，放些我正在做的事情。</p>
+        <p class="note">——搞半天还要自己拼</p>
+      </article>
+
+      <article class="room" id="shelf">
+        <h2>置物架</h2>
+        <p>一些已经完成的东西。</p>
+        <p class="note">——完成就丢到一边</p>
+      </article>
+
+      <article class="room" id="storeroom">
+        <h2>杂物间</h2>
+        <p>堆放杂七杂八的东西。</p>
+        <p class="note">——“xx滞销，请帮帮我们！”</p>
+      </article>
+
+      <article class="room" id="attic">
+        <h2>阁楼</h2>
+        <p>不知道该放哪里的东西就放到这里。</p>
+        <p class="note">——你和杂物间打一架吧</p>
+      </article>
+
+      <article class="room" id="studio">
+        <h2>画室</h2>
+        <p>放一些觉得好看的，或者 AI 生成的满意作品。</p>
+        <p class="note">——真觉得我会画画啊？</p>
+      </article>
+
+      <article class="room" id="archive">
+        <h2>档案室</h2>
+        <p>资料、文档、一些有用的东西。</p>
+        <p class="note">——不是我的个人档案</p>
+      </article>
+
+      <article class="room wide" id="entrance">
+        <h2>玄关</h2>
+        <p>我的 GitHub 个人主页。</p>
+        <p class="note">——但是class github_personal_homepage(): pass（不告诉你）</p>
+      </article>
+
+      <article class="room" id="mailbox">
+        <h2>信箱</h2>
+        <p>这里有我的邮箱地址。</p>
+        <p class="mail"><a id="mail" href="#">载入中…</a></p>
+        <p class="note">——感觉放这里会被发小广告</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>© 2026 awa-nyn.me</span>
+      <span><span class="nyn">n·y·n</span> // not yet need</span>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var u = "3276772008", d = "qq.com";
+      var m = document.getElementById("mail");
+      if(m){ m.textContent = u + "@" + d; m.href = "mailto:" + u + "@" + d; }
+    })();
+    console.log("%c隙间", "color:#3a5a8c;font-weight:600;letter-spacing:.3em;");
+    console.log("// 没有后台，别找了。");
+  </script>
+</body>
 </html>
